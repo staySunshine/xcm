@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xcm.mapper.BalanceMapper" >
+  <resultMap id="BaseResultMap" type="cn.xcm.model.Balance" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="payments" property="payments" jdbcType="DECIMAL" />
+    <result column="kind" property="kind" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="context" property="context" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, payments, kind, type, context, date
+  </sql>
+  <select id="getIncome" resultType="java.math.BigDecimal">
+    SELECT SUM(payments) FROM `balance` WHERE kind=1;
+  </select>
+  <select id="getOutcome" resultType="java.math.BigDecimal">
+    SELECT SUM(payments) FROM `balance` WHERE kind=0;
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from balance
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from balance
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.xcm.model.Balance" >
+    insert into balance (id, uid, payments, 
+      kind, type, context, 
+      date)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{payments,jdbcType=DECIMAL}, 
+      #{kind,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, 
+      #{date,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xcm.model.Balance" >
+    insert into balance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="payments != null" >
+        payments,
+      </if>
+      <if test="kind != null" >
+        kind,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="payments != null" >
+        #{payments,jdbcType=DECIMAL},
+      </if>
+      <if test="kind != null" >
+        #{kind,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xcm.model.Balance" >
+    update balance
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="payments != null" >
+        payments = #{payments,jdbcType=DECIMAL},
+      </if>
+      <if test="kind != null" >
+        kind = #{kind,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="context != null" >
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xcm.model.Balance" >
+    update balance
+    set uid = #{uid,jdbcType=INTEGER},
+      payments = #{payments,jdbcType=DECIMAL},
+      kind = #{kind,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      context = #{context,jdbcType=VARCHAR},
+      date = #{date,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

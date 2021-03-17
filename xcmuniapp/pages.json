@@ -1,0 +1,53 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// {
+		//     "path" : "pages/index/login",
+		//     "style" : {}
+		// },
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "大航"
+			}
+		}
+	    ,{
+            "path" : "pages/index/login",
+            "style" : {
+				"navigationBarTitleText": "小邹邹"
+			}
+        },
+		{
+		    "path" : "pages/index/home",
+		    "style" : {
+				"navigationBarTitleText": "小邹邹"
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#55ffff"
+	},
+	"tabBar": {
+        "color": "#7A7E83",
+        "selectedColor": "#3cc51f",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "height": "50px",
+        "fontSize": "10px",
+        "iconWidth": "24px",
+        "spacing": "3px",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "iconPath": "static/home3.png",
+            "selectedIconPath": "static/home.png",
+            "text": "home"
+        }, {
+            "pagePath": "pages/index/home",
+            "iconPath": "static/money2.png",
+            "selectedIconPath": "static/money.png",
+            "text": "balance"
+        }]
+    }
+}

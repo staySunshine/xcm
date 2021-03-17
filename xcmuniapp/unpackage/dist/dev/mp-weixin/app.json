@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/login",
+    "pages/index/home"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#55ffff"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "height": "50px",
+    "fontSize": "10px",
+    "iconWidth": "24px",
+    "spacing": "3px",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/home3.png",
+        "selectedIconPath": "static/home.png",
+        "text": "home"
+      },
+      {
+        "pagePath": "pages/index/home",
+        "iconPath": "static/money2.png",
+        "selectedIconPath": "static/money.png",
+        "text": "balance"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
